@@ -125,9 +125,9 @@
             background: $black;
             box-shadow: 0 0 10px 5px rgb(0 0 0 / 15%);
             transition: transform .3s;
-            @include adaptive_value('border-radius', 15, 10, 1, 320);
-            @include adaptive_value('padding-top', 60, 20, 1, 320);
-            @include adaptive_value('padding-bottom', 60, 20, 1, 320);
+            @include adaptive_value('border-radius', 15, 10, 1400, 320);
+            @include adaptive_value('padding-top', 60, 20, 1400, 320);
+            @include adaptive_value('padding-bottom', 60, 20, 1400, 320);
         }
 
         &__header {
@@ -136,11 +136,11 @@
         &__body {
             overflow: auto;
             padding: 5px 0;
-            @include adaptive_value('padding-right', 60, 20, 1, 320);
-            @include adaptive_value('padding-left', 60, 20, 1, 320);
+            @include adaptive_value('padding-right', 60, 20, 1400, 320);
+            @include adaptive_value('padding-left', 60, 20, 1400, 320);
             &::-webkit-scrollbar {
-                @include adaptive_value('width', 30, 16, 1, 320);
-                @include adaptive_value('height', 30, 16, 1, 320);
+                @include adaptive_value('width', 30, 16, 1400, 320);
+                @include adaptive_value('height', 30, 16, 1400, 320);
             }
             &::-webkit-scrollbar-track {
                 background: $black;
@@ -149,8 +149,8 @@
                 background: gray;
                 border-color: $black;
                 border-style: solid;
-                @include adaptive_value('border-radius', 30, 16, 1, 320);
-                @include adaptive_value('border-width', 12, 6, 1, 320);
+                @include adaptive_value('border-radius', 30, 16, 1400, 320);
+                @include adaptive_value('border-width', 12, 6, 1400, 320);
             }
         }
 

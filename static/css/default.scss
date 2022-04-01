@@ -31,15 +31,15 @@ img {
 }
 
 ::-webkit-scrollbar {
-    @include adaptive_value('width', 12, 4, 1, 320);
-    @include adaptive_value('height', 12, 4, 1, 320);
-    @include adaptive_value('border-radius', 12, 4, 1, 320);
+    @include adaptive_value('width', 12, 4, 1400, 320);
+    @include adaptive_value('height', 12, 4, 1400, 320);
+    @include adaptive_value('border-radius', 12, 4, 1400, 320);
     background: $gray;
 }
 
 ::-webkit-scrollbar-thumb {
     background: $blue;
-    @include adaptive_value('border-radius', 12, 4, 1, 320);
+    @include adaptive_value('border-radius', 12, 4, 1400, 320);
 }
 
 ////////////////////// сброс

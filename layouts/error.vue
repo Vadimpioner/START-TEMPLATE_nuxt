@@ -47,7 +47,7 @@
         .d-flex.fd-c.jcc.aic {
             height: 100vh;
             // .CommonButton__basic {
-            //     @include adaptive_value('margin-top', 30, 15, 1, 320)
+            //     @include adaptive_value('margin-top', 30, 15, 1400, 320)
             // }
         }
     }
