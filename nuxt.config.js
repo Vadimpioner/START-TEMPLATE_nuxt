@@ -18,7 +18,6 @@ export default {
     router: {
         linkActiveClass: 'nuxtLink',
         linkExactActiveClass: 'nuxtLinkActive',
-        // base: './'
     },
 
     css: [
@@ -26,7 +25,6 @@ export default {
     ],
 
     plugins: [
-        '~/plugins/components.js',
     ],
 
     components: true,
