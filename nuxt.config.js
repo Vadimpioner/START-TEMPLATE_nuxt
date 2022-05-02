@@ -1,60 +1,72 @@
 export default {
-    head: {
-        title: 'TEMPLATE',
-        htmlAttrs: {
-            lang: 'ru'
-        },
-        meta: [
-            { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { hid: 'description', name: 'description', content: '' },
-            { name: 'format-detection', content: 'telephone=no' }
-        ],
-        link: [
-            { rel: 'icon', type: 'image/x-icon', href: '~/static/favicon.ico' }
-        ]
+  head: {
+    title: 'TEMPLATE',
+    htmlAttrs: {
+      lang: 'ru'
     },
-
-    router: {
-        linkActiveClass: 'nuxtLink',
-        linkExactActiveClass: 'nuxtLinkActive',
-    },
-
-    css: [
-        '~/static/css/_accomulate.scss',
+    meta: [{
+        charset: 'utf-8'
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content: ''
+      },
+      {
+        name: 'format-detection',
+        content: 'telephone=no'
+      }
     ],
+    link: [{
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '~/static/favicon.ico'
+    }]
+  },
 
-    plugins: [
+  router: {
+    linkActiveClass: 'nuxtLink',
+    linkExactActiveClass: 'nuxtLinkActive',
+  },
+
+  css: [
+    '~/static/css/_accomulate.scss',
+  ],
+
+  plugins: [],
+
+  components: true,
+
+  buildModules: ['@nuxtjs/google-fonts'],
+
+  googleFonts: {
+    display: 'swap',
+    families: {
+      Raleway: [400, 500, 700],
+      'Material+Icons': true,
+      'Material+Icons+Outlined': true,
+    },
+  },
+
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/style-resources',
+  ],
+
+  styleResources: {
+    scss: [
+      '~/static/css/_colors.scss',
+      '~/static/css/_mixins.scss',
     ],
+  },
 
-    components: true,
+  axios: {
+    baseURL: '/',
+  },
 
-    buildModules: ['@nuxtjs/google-fonts'],
-
-    googleFonts: {
-        display: 'swap',
-        families: {
-            Raleway: [400, 500, 700],
-            'Material+Icons': true,
-            'Material+Icons+Outlined': true,
-        },
-    },
-
-    modules: [
-        '@nuxtjs/axios',
-        '@nuxtjs/style-resources',
-    ],
-
-    styleResources: {
-        scss: [
-            '~/static/css/_colors.scss',
-            '~/static/css/_mixins.scss',
-        ],
-    },
-
-    axios: {
-        baseURL: '/',
-    },
-
-    build: {}
+  build: {}
 }

@@ -1,13 +1,13 @@
 <template>
-    <main>
-        Main
-    </main>
+  <main>
+    Main
+  </main>
 </template>
 
 <script>
-    export default {
-        name: 'Index',
-    }
+  export default {
+    name: 'Index',
+  }
 </script>
 
 <style lang="scss" scoped>
