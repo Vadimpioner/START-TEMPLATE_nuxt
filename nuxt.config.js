@@ -41,7 +41,9 @@ export default {
 
   components: true,
 
-  buildModules: ['@nuxtjs/google-fonts'],
+  buildModules: [
+    '@nuxtjs/google-fonts'
+  ],
 
   googleFonts: {
     display: 'swap',
