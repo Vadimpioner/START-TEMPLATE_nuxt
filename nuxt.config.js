@@ -34,7 +34,7 @@ export default {
   },
 
   css: [
-    '~/static/css/_accomulate.scss',
+    '~/assets/css/_accomulate.scss',
   ],
 
   plugins: [],
@@ -59,8 +59,8 @@ export default {
 
   styleResources: {
     scss: [
-      '~/static/css/_colors.scss',
-      '~/static/css/_mixins.scss',
+      '~/assets/css/_colors.scss',
+      '~/assets/css/_mixins.scss',
     ],
   },
 
