@@ -1,9 +1,29 @@
 .opacity {
   transition: opacity .3s;
-
   @media(min-width: calc($container + 1px)) {
     &:hover {
       opacity: .5
     }
   }
+}
+.black {
+  color: $black;
+}
+.white {
+  color: $white;
+}
+.green {
+  color: $green;
+}
+.gray {
+  color: $gray;
+}
+.red {
+  color: $red;
+}
+.blue {
+  color: $blue;
+}
+.yellow {
+  color: $yellow;
 }
