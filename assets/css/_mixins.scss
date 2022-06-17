@@ -1,5 +1,6 @@
+$container: 1400px;
+
 // $maxWidth: 1920;
-// $maxWidthContainer: 1400;
 @mixin adaptive_value($property, $starSize, $minSize, $width, $minWidthContainer) {
   $addSize: $starSize - $minSize;
   // Только если меньше контейнера
@@ -12,7 +13,7 @@
   // @else if $type==2 {
   //     // Только если больше контейнера
   //     #{$property}: $starSize + px;
-  //     @media (min-width: #{$maxWidthContainer + px}) {
+  //     @media (min-width: #{$container + px}) {
   //         #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
   //     }
   // }

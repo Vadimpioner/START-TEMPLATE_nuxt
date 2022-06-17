@@ -1,34 +1,42 @@
 
 <template>
   <transition name="fade">
-    <div :class="modalClass" v-if="active">
-      <div :class="`${modalClass}__overlay`" @click="closeModal">
-        <div :class="`${modalClass}__container`">
-          <div
-            :class="`${modalClass}__content`"
-            @click.stop
-            >
-            <section :class="`${modalClass}__header`" v-if="$slots.header">
+    <div
+      :class="[
+        `${modalClass} d-flex jcc aic pos-fixed w100 h100 top-0 bottom-0 left-0 right-0 z-100`,
+        {theme_dark: isTheme === 'dark'}
+      ]"
+      @click="closeModal"
+      v-if="active"
+      >
+        <div
+          :class="[
+            `${modalClass}__content d-flex fd-c`,
+            {custom_padding: !$slots.header && !$slots.footer},
+            {custom_padding_top: !$slots.header && $slots.footer},
+            {custom_padding_bottom: $slots.header && !$slots.footer},
+          ]"
+          @click.stop
+          >
+          <section :class="`${modalClass}__content-header d-flex jcsb aic`" v-if="$slots.header">
+            <div class="flex-1">
               <slot name="header"></slot>
-              <span
-                class="material-icons black fz-28 fw600 c-p"
-                v-if="showCloseModal"
-                @click="closeModal"
-                >
-                close
-              </span>
-            </section>
-
-            <section :class="`${modalClass}__body`">
-              <slot name="body"></slot>
-            </section>
-
-            <section :class="`${modalClass}__footer`" v-if="$slots.footer">
-              <slot name="footer"></slot>
-            </section>
-          </div>
+            </div>
+            <span
+              class="material-icons black hmc c-p opacity"
+              v-if="showCloseModal"
+              @click="closeModal"
+              >
+              close
+            </span>
+          </section>
+          <section :class="`${modalClass}__content-body`">
+            <slot name="body"></slot>
+          </section>
+          <section :class="`${modalClass}__content-footer`" v-if="$slots.footer">
+            <slot name="footer"></slot>
+          </section>
         </div>
-      </div>
     </div>
   </transition>
 </template>
@@ -40,23 +48,24 @@
         type: Boolean,
         default: false,
       },
-      modalClass: {
+      isTheme: {
         type: String,
-        default: 'CommonModal',
-      },
-      showModal: {
-        type: Boolean,
-        required: false
+        required: false,
+        validator(val) {
+          return ["dark",].includes(val);
+        },
       },
       showCloseModal: {
         type: Boolean,
         required: false,
       },
-      modalData: {
+      modalClass: {
+        type: String,
+        default: 'CommonModal',
+      },
+      data: {
         type: Array,
-        default() {
-          return []
-        }
+        default: () => []
       }
     },
     mounted() {
@@ -89,72 +98,73 @@
 
 <style lang="scss">
   .CommonModal {
-    &__overlay {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 100;
-      background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
+    &.theme_dark {
+      .CommonModal__content {
+        background: $black;
+        &-body {
+          &::-webkit-scrollbar-thumb {
+            background: white;
+          }
+        }
+        &-header {
+          .material-icons {
+            color: white;
+          }
+        }
+      }
     }
-    &__container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      align-items: center;
-      justify-content: center;
-      display: flex;
-    }
-
     &__content {
       min-width: 280px;
-      max-width: 90%;
-      max-height: 90%;
+      max-width: 95%;
+      max-height: 95%;
       width: 600px;
-      margin: auto;
-      display: flex;
-      flex-flow: column;
-      overflow: hidden;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      background: $black;
+      background: white;
       box-shadow: 0 0 10px 5px rgb(0 0 0 / 15%);
       transition: transform .3s;
-      @include adaptive_value('border-radius', 15, 10, 1400, 320);
-      @include adaptive_value('padding-top', 60, 20, 1400, 320);
-      @include adaptive_value('padding-bottom', 60, 20, 1400, 320);
-    }
-
-    &__header {
-    }
-
-    &__body {
-      overflow: auto;
-      padding: 5px 0;
-      @include adaptive_value('padding-right', 60, 20, 1400, 320);
-      @include adaptive_value('padding-left', 60, 20, 1400, 320);
-      &::-webkit-scrollbar {
-        @include adaptive_value('width', 30, 16, 1400, 320);
-        @include adaptive_value('height', 30, 16, 1400, 320);
+      overflow: hidden;
+      @include adaptive_value('border-radius', 15, 15, 1400, 320);
+      @include adaptive_value('padding-right', 30, 15, 1400, 320);
+      @include adaptive_value('padding-left', 30, 15, 1400, 320);
+      &.custom_padding_bottom {
+        @include adaptive_value('padding-bottom', 20, 15, 1400, 320);
       }
-      &::-webkit-scrollbar-track {
-        background: $black;
+      &.custom_padding_top {
+        @include adaptive_value('padding-top', 20, 15, 1400, 320);
       }
-      &::-webkit-scrollbar-thumb {
-        background: gray;
-        border-color: $black;
-        border-style: solid;
-        @include adaptive_value('border-radius', 30, 16, 1400, 320);
-        @include adaptive_value('border-width', 12, 6, 1400, 320);
+      &.custom_padding {
+        @include adaptive_value('padding-bottom', 20, 15, 1400, 320);
+        @include adaptive_value('padding-top', 20, 15, 1400, 320);
+      }
+      &-body {
+        overflow: auto;
+        @include adaptive_value('padding-right', 28, 14, 1400, 320);
+        &::-webkit-scrollbar {
+          background: transparent;
+          @include adaptive_value('width', 6, 4, 1400, 320);
+        }
+        &::-webkit-scrollbar-thumb {
+          background: $black;
+          @include adaptive_value('border-radius', 3, 2, 1400, 320);
+        }
+      }
+      &-header {
+        @include adaptive_value('padding-top', 20, 15, 1400, 320);
+        @include adaptive_value('padding-bottom', 20, 15, 1400, 320);
+        .material-icons {
+          @include adaptive_value('font-size', 30, 24, 1400, 320);
+        }
+      }
+      &-footer {
+        @include adaptive_value('padding-top', 20, 15, 1400, 320);
+        @include adaptive_value('padding-bottom', 20, 15, 1400, 320);
       }
     }
-
-    &__footer {
+  }
+  .fade-enter,
+  .fade-leave-active {
+    .CommonModal__content {
+      transform: scale(1.05);
     }
   }
 </style>
