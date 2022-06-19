@@ -39,7 +39,12 @@ export default {
 
   plugins: [],
 
-  components: true,
+  components: [
+    {
+      path: "~/components",
+      pathPrefix: false
+    }
+  ],
 
   buildModules: [
     '@nuxtjs/google-fonts'
@@ -57,7 +62,25 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
+    '@nuxtjs/i18n',
   ],
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: [
+      {
+        name: "English",
+        code: "en",
+        file: "en-US.json",
+      },
+      {
+        name: "Русский",
+        code: "ru",
+        file: "ru-RU.json",
+      },
+    ],
+    langDir: "lang/",
+  },
 
   styleResources: {
     scss: [

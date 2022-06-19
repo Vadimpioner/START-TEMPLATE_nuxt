@@ -1,0 +1,11 @@
+{
+  "footer": {
+    "title": "Footer"
+  },
+  "header": {
+    "title": "Header | Headers"
+  },
+  "index": {
+    "title": "Body"
+  }
+}
