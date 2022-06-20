@@ -8,8 +8,8 @@
         label: 'test',
         error: test,
         width: '300px',
-        placeholder: 'placeholder text',
-        error_message: 'error_message'
+        placeholder: 'placeholder',
+        error_message: 'error_message',
       }"
     />
     <CommonInput
@@ -27,7 +27,7 @@
           name: null,
           age: null
         },
-        test: false
+        test: false,
       }
     },
   }

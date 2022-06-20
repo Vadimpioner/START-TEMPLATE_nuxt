@@ -5,9 +5,9 @@
     :style="{pointerEvents: disabled ? 'none' : null}"
     :class="`CommonButton__${buttonClass} d-flex aic jcc br-5 select-none wmc`"
     >
-    <span class="fz-20 fw600">
+    <div class="fz-20 fw600">
       <slot name="default"></slot>
-    </span>
+    </div>
   </button>
 </template>
 
@@ -48,7 +48,7 @@
     &:disabled {
       pointer-events: none;
       background: $gray;
-      span {
+      div {
         color: $white;
       }
     }
@@ -64,9 +64,9 @@
   .CommonButton__two {
     background: $red;
       @media(min-width: $tablet + 1px) {
-          &:hover {
-            box-shadow: 0px 5px 10px rgba($red, 0.4);
-          }
+        &:hover {
+          box-shadow: 0px 5px 10px rgba($red, 0.4);
+        }
       }
   }
 </style>

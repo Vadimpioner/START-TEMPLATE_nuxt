@@ -69,6 +69,10 @@ a {
 input {
   outline: none;
   padding: 0;
+  border: 0;
+  &::placeholder {
+    user-select: none;
+  }
 }
 
 textarea {

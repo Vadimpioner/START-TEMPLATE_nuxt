@@ -37,7 +37,9 @@ export default {
     '~/assets/css/_accomulate.scss',
   ],
 
-  plugins: [],
+  plugins: [
+    '~/plugins/outside.js',
+  ],
 
   components: [
     {
