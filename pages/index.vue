@@ -12,9 +12,22 @@
         error_message: 'error_message',
       }"
     />
+    <pre>{{content.number}}</pre>
     <CommonInput
-      v-model="content.age"
+      v-model="content.number"
+      @input="content.number = content.number.replace(/[^0-9]/, '')"
+      :options="{
+        width: '300px',
+      }"
     />
+    <CommonInput
+      v-model="content.password"
+      :options="{
+        width: '300px',
+        type: 'password'
+      }"
+    />
+    <vue-tel-input v-model="content.phone"></vue-tel-input>
   </main>
 </template>
 
@@ -25,7 +38,9 @@
       return {
         content: {
           name: null,
-          age: null
+          number: null,
+          password: null,
+          phone: null,
         },
         test: false,
       }

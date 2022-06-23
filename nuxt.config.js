@@ -39,6 +39,7 @@ export default {
 
   plugins: [
     '~/plugins/outside.js',
+    '~/plugins/tel-input.js',
   ],
 
   components: [
@@ -58,6 +59,7 @@ export default {
       Raleway: [400, 500, 700],
       'Material+Icons': true,
       'Material+Icons+Outlined': true,
+      'Material+Icons+Round': true,
     },
   },
 

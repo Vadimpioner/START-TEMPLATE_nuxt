@@ -13,7 +13,8 @@
       ]"
       :style="[
         {'max-width': options.width},
-        {cursor: !options.prefix && !options.suffix ? 'text' : 'initial'}
+        {cursor: !options.prefix && !options.suffix ? 'text' : 'initial'},
+        {pointerEvents: options.disabled ? 'none' : null}
       ]"
       v-outside="() => focus = false"
       @click="
@@ -34,7 +35,7 @@
         ref="CommonInput"
         :class="['fz-16 fw500 w100']"
         :autoFocus="options.autoFocus"
-        :type="options.type"
+        :type="!passwordShow ? options.type : 'text'"
         :required="options.required"
         :maxlength="options.maxlength"
         :placeholder="options.placeholder"
@@ -52,11 +53,28 @@
         >
         {{ options.suffix }}
       </span>
+      <transition-group name="fade" tag="div" class="d-flex">
+        <span
+          key="text"
+          v-if="value && $listeners.reset"
+          @click="$emit('reset')"
+          class="material-icons-round gray c-p select-none opacity"
+          >
+          highlight_off
+        </span>
+        <span
+          key="password"
+          v-if="value && options.type == 'password'"
+          @click="passwordShow = !passwordShow"
+          class="material-icons-round gray c-p select-none opacity"
+          >
+          {{ passwordShow ? 'visibility_off' : 'visibility' }}
+        </span>
+      </transition-group>
     </div>
     <CommonTransitionY>
       <small v-if="options.error">{{ options.error_message }}</small>
     </CommonTransitionY>
-    {{ focus }}
   </div>
 </template>
 
@@ -78,12 +96,14 @@
     data() {
       return {
         id: "input_" + Math.random(),
-        focus: false
+        focus: false,
+        passwordShow: false
       }
     },
     methods: {
     },
     mounted() {
+      console.log(this.$listeners);
     }
   }
 </script>
