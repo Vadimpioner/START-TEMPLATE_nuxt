@@ -12,22 +12,35 @@
         error_message: 'error_message',
       }"
     />
-    <pre>{{content.number}}</pre>
     <CommonInput
       v-model="content.number"
       @input="content.number = content.number.replace(/[^0-9]/, '')"
       :options="{
         width: '300px',
+        placeholder: 'Number'
       }"
     />
     <CommonInput
       v-model="content.password"
       :options="{
         width: '300px',
-        type: 'password'
+        type: 'password',
+        placeholder: 'Password'
       }"
     />
-    <vue-tel-input v-model="content.phone"></vue-tel-input>
+    <pre>{{content.phone}}</pre>
+    <CommonInput
+      v-model="content.phone"
+      :options="{
+        width: '300px',
+        type: 'tel',
+        placeholder: 'tel',
+        error: test,
+        error_message: 'error_message2',
+
+      }"
+    />
+    <!-- @input="content.phone = content.phone.replace(/[^0-9]/, '')" -->
   </main>
 </template>
 

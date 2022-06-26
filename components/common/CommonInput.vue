@@ -4,17 +4,19 @@
     :class="{ this_error: options.error }"
     >
     <label v-if="options.label" :for="id">{{ options.label }}</label>
+    <h1>{{focus}}</h1>
     <div
       :class="[
         'CommonInput__content br-5 d-flex aic',
         {prefix: options.prefix},
         {suffix: options.suffix},
-        {focus: focus}
+        {disabled: options.disabled},
+        {tel: options.type == 'tel'},
+        {focus: focus},
       ]"
       :style="[
         {'max-width': options.width},
         {cursor: !options.prefix && !options.suffix ? 'text' : 'initial'},
-        {pointerEvents: options.disabled ? 'none' : null}
       ]"
       v-outside="() => focus = false"
       @click="
@@ -31,7 +33,20 @@
         >
         {{ options.prefix }}
       </span>
+      <vue-tel-input
+        v-if="options.type == 'tel'"
+        ref="CommonInput"
+        v-model="inputTel"
+        :value="value"
+        :id="id"
+        :inputOptions="{
+          placeholder: options.placeholder,
+          autofocus: options.autoFocus,
+        }"
+        @country-changed="setPrefix"
+      />
       <input
+        v-else
         ref="CommonInput"
         :class="['fz-16 fw500 w100']"
         :autoFocus="options.autoFocus"
@@ -53,7 +68,12 @@
         >
         {{ options.suffix }}
       </span>
-      <transition-group name="fade" tag="div" class="d-flex">
+      <transition-group
+        name="fade"
+        tag="div"
+        class="d-flex"
+        v-if="options.type == 'password'"
+        >
         <span
           key="text"
           v-if="value && $listeners.reset"
@@ -64,7 +84,7 @@
         </span>
         <span
           key="password"
-          v-if="value && options.type == 'password'"
+          v-if="value"
           @click="passwordShow = !passwordShow"
           class="material-icons-round gray c-p select-none opacity"
           >
@@ -97,13 +117,28 @@
       return {
         id: "input_" + Math.random(),
         focus: false,
-        passwordShow: false
+        passwordShow: false,
       }
     },
+    computed: {
+      inputTel: {
+        get() {
+          return this.value;
+        },
+        set(val) {
+          this.$emit("input", val);
+        },
+      },
+    },
     methods: {
+      setPrefix(e) {
+        let count = Math.random();
+        this.$emit("input", `+${e?.dialCode}`);
+        if(count == count) setTimeout(() => this.focus = true, 0)
+      },
     },
     mounted() {
-      console.log(this.$listeners);
+      // console.log(this.$listeners);
     }
   }
 </script>
@@ -125,6 +160,71 @@
       }
       &.focus {
         border-color: $blue !important;
+      }
+      &.disabled {
+        pointer-events: none;
+        opacity: .7;
+      }
+      &.tel {
+        padding-left: 0;
+        .vue-tel-input {
+          width: 100%;
+          height: 100%;
+          border: unset;
+          box-shadow: unset;
+          ::v-deep {
+            .vti__dropdown {
+              border-right: 1px solid $gray;
+              background-color: $gray;
+              padding: 0 15px;
+              border-radius: 3px 0 0 3px;
+              transition: background-color .3s;
+              @media(min-width: $tablet + 1px) {
+                &:hover {
+                  background-color: rgba($gray, .7);
+                }
+              }
+              ul {
+                // width: initial !important;
+                top: 55px;
+                left: -2px;
+                border: 2px solid $blue;
+                border-radius: 5px;
+                @include scroll;
+                li {
+                  min-height: 40px;
+                  padding: 0 15px;
+                  display: flex;
+                  align-items: center;
+                  column-gap: 10px;
+                  strong, span {
+                    @include adaptive_value('font-size', 16, 14, 1400, 320);
+                  }
+                  span {
+                    font-weight: 500;
+                    margin: 0;
+                  }
+                  .vti__flag-wrapper {
+                    width: max-content;
+                  }
+                }
+              }
+              .vti__selection {
+                column-gap: 5px;
+                .vti__flag {
+                  margin: 0;
+                  display: flex;
+                  column-gap: 5px;
+                }
+              }
+            }
+            .vti__input {
+              font-weight: 500;
+              background-color: transparent;
+              @include adaptive_value('font-size', 16, 14, 1400, 320);
+            }
+          }
+        }
       }
       &:hover {
         border-color: $green;

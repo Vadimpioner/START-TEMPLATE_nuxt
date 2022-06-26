@@ -6,3 +6,16 @@
     #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidthContainer + px}) / (#{$width} - #{$minWidthContainer})));
   }
 }
+
+@mixin scroll($colorScroll: $blue, $backgroundScroll: transparent, $widthScroll: 6, $heightScroll: 6, $radiusScroll: 6) {
+  &::-webkit-scrollbar {
+    @include adaptive_value('width', $widthScroll, 4, 1110, 320);
+    @include adaptive_value('height', $heightScroll, 4, 1110, 320);
+    @include adaptive_value('border-radius', $radiusScroll, 4, 1110, 320);
+    background: $backgroundScroll;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $colorScroll;
+    @include adaptive_value('border-radius', $radiusScroll, 4, 1110, 320);
+  }
+}
