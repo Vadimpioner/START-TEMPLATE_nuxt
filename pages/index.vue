@@ -11,14 +11,16 @@
         placeholder: 'placeholder',
         error_message: 'error_message',
       }"
+      @reset="content.name = ''"
     />
     <CommonInput
       v-model="content.number"
       @input="content.number = content.number.replace(/[^0-9]/, '')"
       :options="{
         width: '300px',
-        placeholder: 'Number'
+        placeholder: 'Number',
       }"
+      @reset="content.number = ''"
     />
     <CommonInput
       v-model="content.password"
@@ -37,10 +39,9 @@
         placeholder: 'tel',
         error: test,
         error_message: 'error_message2',
-
       }"
+      @reset="content.phone = ''"
     />
-    <!-- @input="content.phone = content.phone.replace(/[^0-9]/, '')" -->
   </main>
 </template>
 

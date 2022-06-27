@@ -37,7 +37,7 @@
         v-if="options.type == 'tel'"
         ref="CommonInput"
         v-model="inputTel"
-        :value="value"
+        validCharactersOnly
         :id="id"
         :inputOptions="{
           placeholder: options.placeholder,
@@ -72,7 +72,7 @@
         name="fade"
         tag="div"
         class="d-flex"
-        v-if="options.type == 'password'"
+        v-if="options.type == 'password' || $listeners.reset"
         >
         <span
           key="text"
@@ -84,7 +84,7 @@
         </span>
         <span
           key="password"
-          v-if="value"
+          v-if="value && options.type == 'password'"
           @click="passwordShow = !passwordShow"
           class="material-icons-round gray c-p select-none opacity"
           >
@@ -104,7 +104,7 @@
     props: {
       value: {
         type: String,
-        default: ''
+        default: 'у'
       },
       options: {
         type: Object,
@@ -132,9 +132,9 @@
     },
     methods: {
       setPrefix(e) {
-        let count = Math.random();
+        this.inputTel = '';
         this.$emit("input", `+${e?.dialCode}`);
-        if(count == count) setTimeout(() => this.focus = true, 0)
+        setTimeout(() => this.focus = true, 10)
       },
     },
     mounted() {
