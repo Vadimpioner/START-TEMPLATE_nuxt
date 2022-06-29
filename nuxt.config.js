@@ -40,6 +40,9 @@ export default {
   plugins: [
     '~/plugins/outside.js',
     '~/plugins/tel-input.js',
+    '~/plugins/v-mask.js',
+    '~/plugins/scrollTop.js',
+    '~/plugins/scrollById.js',
   ],
 
   components: [
@@ -97,5 +100,7 @@ export default {
     baseURL: '/',
   },
 
-  build: {}
+  build: {
+    extractCSS: true,
+  }
 }

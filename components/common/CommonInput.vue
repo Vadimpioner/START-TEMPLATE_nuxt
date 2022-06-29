@@ -4,7 +4,6 @@
     :class="{ this_error: options.error }"
     >
     <label v-if="options.label" :for="id">{{ options.label }}</label>
-    <h1>{{focus}}</h1>
     <div
       :class="[
         'CommonInput__content br-5 d-flex aic',
@@ -38,6 +37,7 @@
         ref="CommonInput"
         v-model="inputTel"
         validCharactersOnly
+        @focus="focusTel()"
         :id="id"
         :inputOptions="{
           placeholder: options.placeholder,
@@ -48,6 +48,7 @@
       <input
         v-else
         ref="CommonInput"
+        v-mask="options.mask"
         :class="['fz-16 fw500 w100']"
         :autoFocus="options.autoFocus"
         :type="!passwordShow ? options.type : 'text'"
@@ -131,10 +132,12 @@
       },
     },
     methods: {
+      focusTel() {
+        setTimeout(() => this.focus = true, 0)
+      },
       setPrefix(e) {
         this.inputTel = '';
-        this.$emit("input", `+${e?.dialCode}`);
-        setTimeout(() => this.focus = true, 10)
+        this.$emit("input", `+${e?.dialCode}`)
       },
     },
     mounted() {
@@ -185,7 +188,7 @@
                 }
               }
               ul {
-                // width: initial !important;
+                height: max-content;
                 top: 55px;
                 left: -2px;
                 border: 2px solid $blue;
