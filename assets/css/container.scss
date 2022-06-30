@@ -1,6 +1,6 @@
 .container {
-  max-width: $container;
+  max-width: $container + px;
   margin: 0 auto;
-  @include adaptive_value('padding-left', 40, 10, 1400, 320);
-  @include adaptive_value('padding-right', 40, 10, 1400, 320);
+  @include adaptive_value('padding-left', 40, 10);
+  @include adaptive_value('padding-right', 40, 10);
 }

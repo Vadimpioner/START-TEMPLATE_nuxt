@@ -152,14 +152,14 @@
       border: 2px solid $gray;
       transition: all .3s;
       height: 50px;
-      @include adaptive_value('column-gap', 10, 5, 1400, 320);
-      @include adaptive_value('padding-right', 20, 15, 1400, 320);
-      @include adaptive_value('padding-left', 20, 15, 1400, 320);
+      @include adaptive_value('column-gap', 10, 5);
+      @include adaptive_value('padding-right', 20, 15);
+      @include adaptive_value('padding-left', 20, 15);
       &.prefix {
-        @include adaptive_value('padding-left', 15, 10, 1400, 320);
+        @include adaptive_value('padding-left', 15, 10);
       }
       &.suffix {
-        @include adaptive_value('padding-right', 15, 10, 1400, 320);
+        @include adaptive_value('padding-right', 15, 10);
       }
       &.focus {
         border-color: $blue !important;
@@ -182,7 +182,7 @@
               padding: 0 15px;
               border-radius: 3px 0 0 3px;
               transition: background-color .3s;
-              @media(min-width: $tablet + 1px) {
+              @media(min-width: #{$tablet + 1 + px}) {
                 &:hover {
                   background-color: rgba($gray, .7);
                 }
@@ -201,7 +201,7 @@
                   align-items: center;
                   column-gap: 10px;
                   strong, span {
-                    @include adaptive_value('font-size', 16, 14, 1400, 320);
+                    @include adaptive_value('font-size', 16, 14);
                   }
                   span {
                     font-weight: 500;
@@ -224,7 +224,7 @@
             .vti__input {
               font-weight: 500;
               background-color: transparent;
-              @include adaptive_value('font-size', 16, 14, 1400, 320);
+              @include adaptive_value('font-size', 16, 14);
             }
           }
         }
@@ -237,7 +237,7 @@
         height: 100%;
         background-color: transparent;
         &::placeholder {
-          @include adaptive_value('font-size', 16, 14, 1400, 320);
+          @include adaptive_value('font-size', 16, 14);
         }
       }
       &_suffix {}

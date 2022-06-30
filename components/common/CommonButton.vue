@@ -37,10 +37,10 @@
   .CommonButton__four {
     border: none;
     transition: all .3s;
-    @include adaptive_value('height', 56, 40, 1400, 320);
-    @include adaptive_value('padding-right', 20, 15, 1400, 320);
-    @include adaptive_value('padding-left', 20, 15, 1400, 320);
-    @media(min-width: $tablet + 1px) {
+    @include adaptive_value('height', 56, 40);
+    @include adaptive_value('padding-right', 20, 15);
+    @include adaptive_value('padding-left', 20, 15);
+    @media(min-width: #{$tablet + 1 + px}) {
       &:hover {
         transform: scale(1.1);
       }
@@ -55,7 +55,7 @@
   }
   .CommonButton__one {
       background: $blue;
-      @media(min-width: $tablet + 1px) {
+      @media(min-width: #{$tablet + 1 + px}) {
         &:hover {
           box-shadow: 0px 5px 20px rgba($blue, 0.6);
         }
@@ -63,7 +63,7 @@
   }
   .CommonButton__two {
     background: $red;
-      @media(min-width: $tablet + 1px) {
+      @media(min-width: #{$tablet + 1 + px}) {
         &:hover {
           box-shadow: 0px 5px 10px rgba($red, 0.4);
         }

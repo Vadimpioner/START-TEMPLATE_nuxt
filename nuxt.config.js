@@ -41,8 +41,9 @@ export default {
     '~/plugins/outside.js',
     '~/plugins/tel-input.js',
     '~/plugins/v-mask.js',
+    '~/plugins/portal-vue.js',
     '~/plugins/scrollTop.js',
-    '~/plugins/scrollById.js',
+    '~/plugins/scrollToElement.js',
   ],
 
   components: [
@@ -101,6 +102,19 @@ export default {
   },
 
   build: {
+    // extractCSS: true, // дублирует переменные css
     extractCSS: true,
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true
+          }
+        }
+      }
+    }
   }
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-Vue.prototype.$scrollTop = () => window.scrollTo({
-  top: 0,
-  behavior: 'smooth',
+Vue.prototype.$scrollTop = (Y = 0, animate = 'smooth') => window.scrollTo({
+  top: Y,
+  behavior: animate,
 })

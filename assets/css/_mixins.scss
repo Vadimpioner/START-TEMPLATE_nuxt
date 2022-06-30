@@ -1,4 +1,4 @@
-@mixin adaptive_value($property, $starSize, $minSize, $width, $minWidthContainer) {
+@mixin adaptive_value($property, $starSize, $minSize, $width: $container, $minWidthContainer: 320) {
   $addSize: $starSize - $minSize;
   #{$property}: $starSize + px;
 
