@@ -44,6 +44,7 @@ export default {
     '~/plugins/portal-vue.js',
     '~/plugins/scrollTop.js',
     '~/plugins/scrollToElement.js',
+    '~/plugins/element-ui.js',
   ],
 
   components: [
@@ -102,7 +103,6 @@ export default {
   },
 
   build: {
-    // extractCSS: true, // дублирует переменные css
     extractCSS: true,
     optimization: {
       splitChunks: {

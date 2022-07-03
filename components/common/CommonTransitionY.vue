@@ -1,6 +1,6 @@
 <script>
   export default {
-    name: `TransitionExpand`,
+    name: `CommonTransitionY`,
     functional: true,
     render(createElement, context) {
       const data = {

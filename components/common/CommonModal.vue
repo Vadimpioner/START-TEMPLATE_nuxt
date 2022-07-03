@@ -24,7 +24,7 @@
             </div>
             <span
               class="material-icons black hmc c-p opacity"
-              v-if="showCloseModal"
+              v-if="close"
               @click="closeModal"
               >
               close
@@ -55,7 +55,7 @@
           return ["dark",].includes(val);
         },
       },
-      showCloseModal: {
+      close: {
         type: Boolean,
         required: false,
       },
@@ -103,14 +103,18 @@
       .CommonModal__content {
         background: $black;
         &-body {
+          color: white;
           &::-webkit-scrollbar-thumb {
             background: white;
           }
         }
         &-header {
-          .material-icons {
+          .material-icons, .flex-1 {
             color: white;
           }
+        }
+        &-footer {
+          color: white;
         }
       }
     }
@@ -123,41 +127,41 @@
       box-shadow: 0 0 10px 5px rgb(0 0 0 / 15%);
       transition: transform .3s;
       overflow: hidden;
-      @include adaptive_value('border-radius', 15, 15);
-      @include adaptive_value('padding-right', 30, 15);
-      @include adaptive_value('padding-left', 30, 15);
+      @include value_adaptive('border-radius', 15, 15);
+      @include value_adaptive('padding-right', 30, 15);
+      @include value_adaptive('padding-left', 30, 15);
       &.custom_padding_bottom {
-        @include adaptive_value('padding-bottom', 20, 15);
+        @include value_adaptive('padding-bottom', 20, 15);
       }
       &.custom_padding_top {
-        @include adaptive_value('padding-top', 20, 15);
+        @include value_adaptive('padding-top', 20, 15);
       }
       &.custom_padding {
-        @include adaptive_value('padding-bottom', 20, 15);
-        @include adaptive_value('padding-top', 20, 15);
+        @include value_adaptive('padding-bottom', 20, 15);
+        @include value_adaptive('padding-top', 20, 15);
       }
       &-body {
         overflow: auto;
-        @include adaptive_value('padding-right', 28, 14);
+        @include value_adaptive('padding-right', 28, 14);
         &::-webkit-scrollbar {
           background: transparent;
-          @include adaptive_value('width', 6, 4);
+          @include value_adaptive('width', 6, 4);
         }
         &::-webkit-scrollbar-thumb {
           background: $black;
-          @include adaptive_value('border-radius', 3, 2);
+          @include value_adaptive('border-radius', 3, 2);
         }
       }
       &-header {
-        @include adaptive_value('padding-top', 20, 15);
-        @include adaptive_value('padding-bottom', 20, 15);
+        @include value_adaptive('padding-top', 20, 15);
+        @include value_adaptive('padding-bottom', 20, 15);
         .material-icons {
-          @include adaptive_value('font-size', 30, 24);
+          @include value_adaptive('font-size', 30, 24);
         }
       }
       &-footer {
-        @include adaptive_value('padding-top', 20, 15);
-        @include adaptive_value('padding-bottom', 20, 15);
+        @include value_adaptive('padding-top', 20, 15);
+        @include value_adaptive('padding-bottom', 20, 15);
       }
     }
   }

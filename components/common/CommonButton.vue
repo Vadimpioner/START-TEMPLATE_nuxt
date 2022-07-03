@@ -19,7 +19,7 @@
         type: String,
         default: 'one',
         validator(val) {
-          return ["one", "two", "three", "four"].includes(val);
+          return ["one", "two"].includes(val);
         },
       },
       disabled: {
@@ -32,14 +32,12 @@
 
 <style lang="scss">
   .CommonButton__one,
-  .CommonButton__two,
-  .CommonButton__three,
-  .CommonButton__four {
+  .CommonButton__two {
     border: none;
     transition: all .3s;
-    @include adaptive_value('height', 56, 40);
-    @include adaptive_value('padding-right', 20, 15);
-    @include adaptive_value('padding-left', 20, 15);
+    @include value_adaptive('height', 56, 40);
+    @include value_adaptive('padding-right', 20, 15);
+    @include value_adaptive('padding-left', 20, 15);
     @media(min-width: #{$tablet + 1 + px}) {
       &:hover {
         transform: scale(1.1);

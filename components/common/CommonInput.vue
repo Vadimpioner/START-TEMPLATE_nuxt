@@ -105,7 +105,7 @@
     props: {
       value: {
         type: String,
-        default: 'у'
+        default: ''
       },
       options: {
         type: Object,
@@ -152,14 +152,14 @@
       border: 2px solid $gray;
       transition: all .3s;
       height: 50px;
-      @include adaptive_value('column-gap', 10, 5);
-      @include adaptive_value('padding-right', 20, 15);
-      @include adaptive_value('padding-left', 20, 15);
+      @include value_adaptive('column-gap', 10, 5);
+      @include value_adaptive('padding-right', 20, 15);
+      @include value_adaptive('padding-left', 20, 15);
       &.prefix {
-        @include adaptive_value('padding-left', 15, 10);
+        @include value_adaptive('padding-left', 15, 10);
       }
       &.suffix {
-        @include adaptive_value('padding-right', 15, 10);
+        @include value_adaptive('padding-right', 15, 10);
       }
       &.focus {
         border-color: $blue !important;
@@ -201,7 +201,7 @@
                   align-items: center;
                   column-gap: 10px;
                   strong, span {
-                    @include adaptive_value('font-size', 16, 14);
+                    @include value_adaptive('font-size', 16, 14);
                   }
                   span {
                     font-weight: 500;
@@ -224,7 +224,7 @@
             .vti__input {
               font-weight: 500;
               background-color: transparent;
-              @include adaptive_value('font-size', 16, 14);
+              @include value_adaptive('font-size', 16, 14);
             }
           }
         }
@@ -237,7 +237,7 @@
         height: 100%;
         background-color: transparent;
         &::placeholder {
-          @include adaptive_value('font-size', 16, 14);
+          @include value_adaptive('font-size', 16, 14);
         }
       }
       &_suffix {}

@@ -1,6 +1,11 @@
 @import 'class-basic.scss';
 @import 'class-global.scss';
+@import 'color.scss';
 @import 'container.scss';
 @import 'default.scss';
 @import 'font.scss';
 @import 'vue-component-animation';
+
+// element-ui
+@import 'element-ui/lib/theme-chalk/index.css';
+
