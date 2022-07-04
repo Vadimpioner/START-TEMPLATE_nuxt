@@ -1,10 +1,18 @@
 <template>
   <div class="CommonCheckbox">
+    <el-checkbox
+      v-model="checkbox"
+      :indeterminate="isIndeterminate"
+      @change="getAll"
+      >
+      Check all
+    </el-checkbox>
     <el-checkbox-group
-      v-model="CommonCheckbox"
+      v-model="checkboxGroup"
       class="d-flex c-gap-20"
       >
       <el-checkbox
+        @change="checkboxChange"
         v-for="item in data"
         :key="item"
         :style="{'background-color': circle ? item : null}"
@@ -29,15 +37,28 @@
     },
     data() {
       return {
-        CommonCheckbox: [],
+        checkbox: [],
+        checkboxGroup: [],
+        isIndeterminate: false
       }
     },
     watch: {
-      CommonCheckbox(val) {
+      checkboxGroup(val) {
         this.$emit('update', val)
       }
     },
-    methods: {}
+    methods: {
+      getAll(val) {
+        this.checked = true
+        this.checkboxGroup = val ? this.data : []
+      },
+      checkboxChange(value) {
+        let checkedCount = value.length;
+        this.checkbox = checkedCount === this.data.length;
+        console.log(this.checkbox = checkedCount === this.data.length);
+        this.isIndeterminate = checkedCount > 0 && checkedCount < this.data.length;
+      }
+    }
   }
 </script>
 
@@ -93,14 +114,18 @@
             display: flex;
             background-color: unset;
             border: unset;
+            opacity: 1;
             &::after {
               left: 6px;
               @include value_adaptive(height, 11, 10);
             }
           }
         }
-        .el-checkbox__label, .el-checkbox__inner {
+        .el-checkbox__label {
           display: none;
+        }
+        .el-checkbox__inner {
+          opacity: 0;
         }
       }
     }

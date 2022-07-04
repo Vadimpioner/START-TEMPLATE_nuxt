@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import { Message } from 'element-ui'
-import { MessageBox } from 'element-ui';
+import { Message, MessageBox, Loading } from 'element-ui'
 export default () => {
+  Vue.use(Loading.directive);
   Vue.component('ElSwitch', () => import('element-ui/lib/switch'))
   Vue.component('ElSelect', () => import('element-ui/lib/select'))
   Vue.component('ElOption', () => import('element-ui/lib/option'))

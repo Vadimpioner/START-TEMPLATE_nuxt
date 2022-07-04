@@ -61,7 +61,7 @@ export default {
   googleFonts: {
     display: 'swap',
     families: {
-      Raleway: [400, 500, 700],
+      Roboto: [400, 500, 700],
       'Material+Icons': true,
       'Material+Icons+Outlined': true,
       'Material+Icons+Round': true,
