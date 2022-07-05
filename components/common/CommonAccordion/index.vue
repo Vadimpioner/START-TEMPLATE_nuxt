@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="['CommonAccordion pos-r d-flex fd-c']"
-    v-outside="() => Accordion.active = null"
-    >
+  <div :class="['CommonAccordion pos-r d-flex fd-c']">
     <slot></slot>
   </div>
 </template>

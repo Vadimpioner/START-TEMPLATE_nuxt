@@ -143,7 +143,10 @@
               <span class="white" >color - {{color}}</span>
               <span class="white">size - {{size}}</span>
               <CommonCheckbox
-                circle
+                :options="{
+                  circle: true,
+                  min: 1,
+                }"
                 @update="updateColorVariation($event)"
                 :data="colorVariation"
               />
