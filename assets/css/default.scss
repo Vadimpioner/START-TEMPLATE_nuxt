@@ -39,11 +39,11 @@ img {
   @include value_adaptive('width', 12, 4);
   @include value_adaptive('height', 12, 4);
   @include value_adaptive('border-radius', 12, 4);
-  background: $gray;
+  background-color: $gray;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $blue;
+  background-color: $blue;
   @include value_adaptive('border-radius', 12, 4);
 }
 
@@ -85,6 +85,7 @@ textarea {
 
 body {
   margin: 0;
+  background-color: $gray;
 }
 
 button {

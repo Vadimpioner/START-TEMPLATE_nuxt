@@ -144,8 +144,9 @@
               <span class="white">size - {{size}}</span>
               <CommonCheckbox
                 :options="{
+                  el_name: 'Check All',
                   circle: true,
-                  min: 1,
+                  checkbox_group: true,
                 }"
                 @update="updateColorVariation($event)"
                 :data="colorVariation"
@@ -153,6 +154,10 @@
               <CommonCheckbox
                 @update="updateCheckboxList($event)"
                 :data="checkboxList"
+                :options="{
+                  el_name: 'Check All',
+                  checkbox_group: true,
+                }"
               />
             </div>
           </template>
